@@ -21,7 +21,7 @@ function timer() {
                     if (this.minutes === 0) {
                         clearInterval(this.intervalId);
                         this.intervalId = null;
-                        this.onFinish(); // TODO
+                        this.onFinish();
                         return;
                     }
                     this.minutes--;
@@ -44,4 +44,10 @@ function timer() {
             // TODO: Notifications
         }
     }
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+} else {
+    console.log('There is no service worker support in this browser.');
 }
