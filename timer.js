@@ -47,7 +47,13 @@ function timer() {
 }
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register("/sw.js");
+    navigator.serviceWorker.register("/sw.js")
+    .then(reg => {
+        console.log("Service worker registered.");
+    })
+    .catch(err => {
+        console.error("ServiceWorker registration failed.");
+    })
 } else {
     console.log('There is no service worker support in this browser.');
 }
