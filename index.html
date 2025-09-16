@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.slate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css">
     <script defer src="timer.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Timer</title>
 </head>
 
 <body class="container" x-data="timer()">
-    <h1>Timer</h1>
+    <header style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0;">Timer</h1>
+        <div>
+            <!-- Bell (off) -->
+            <svg @click="alert('Notifications request')" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="#e68d0b" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M9.346 5.353c.21 -.129 .428 -.246 .654 -.353a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3m-1 3h-13a4 4 0 0 0 2 -3v-3a6.996 6.996 0 0 1 1.273 -3.707" />
+                <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+                <path d="M3 3l18 18" />
+            </svg>
 
-    <input type="text" name="" placeholder="Task Name" x-bind:disabled="intervalId !== null"> <br>    
-    <input type="number" name="" id="" style="width: fit-content;" placeholder="0" x-model.number="inputMinutes" min="0" x-bind:disabled="intervalId !== null"> minutes
+        </div>
+    </header>
+
+
+    <input type="text" name="" placeholder="Task Name" x-bind:disabled="intervalId !== null"> <br>
+    <input type="number" name="" id="" style="width: fit-content;" placeholder="0" x-model.number="inputMinutes" min="0"
+        x-bind:disabled="intervalId !== null"> minutes
     <input type="button" value="OK" @click="start()" x-bind:disabled="intervalId !== null">
 
-    <div id="countdown-timer" style="margin-top: 2rem; font-size: 4rem; text-align: center; font-family: monospace;">
-        <span id="minutes" x-text="String(minutes).padStart(2, '0')">00</span>:<span id="seconds" x-text.number="String(seconds).padStart(2, '0')">00</span>
+    <div id="countdown-timer" style="margin-top: 2rem; font-size: 3rem; text-align: center; font-family: monospace;">
+        <span id="minutes" x-text="String(minutes).padStart(2, '0')">00</span>:<span id="seconds"
+            x-text="String(seconds).padStart(2, '0')">00</span>
     </div>
 
 </body>
 
-</html> 
+</html>
