@@ -16,7 +16,7 @@
         <div x-data="{ permission: Notification.permission }">
 
             <!-- Bell (off) -->
-            <svg x-show="permission !== 'granted'" @click="alert('TODO: Notifications request')" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+            <svg x-show="permission !== 'granted'" @click="Notification.requestPermission().then(p => permission = p);" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                 viewBox="0 0 24 24" fill="none" stroke="#8b8989" stroke-width="1" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path
